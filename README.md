@@ -2,7 +2,7 @@
 
 > **Paksa Buat Aplikasi Android** — Android project generator ultra-ringan untuk Windows + VS Code.
 
-Buat project Android baru dalam hitungan detik langsung dari terminal. Pilih template, isi nama app dan package, dan project siap dibuka di VS Code — tanpa Android Studio, dan **tanpa setup manual yang rumit**.
+Buat project Android baru dalam hitungan detik langsung dari terminal. Pilih template, isi nama app dan package, dan project siap dibuka di VS Code — **tanpa Android Studio, dan tanpa setup manual yang rumit**.
 
 Dirancang khusus untuk developer yang coding di **laptop low-end (Potato PC)** tapi tetap mau pakai Android API terbaru tanpa bikin laptop kepanasan atau SSD penuh.
 
@@ -12,20 +12,20 @@ Built with ❤️ from Indonesia.
 
 ## ✨ Kenapa PAKSA?
 
-* **Tanpa Android Studio:** Jalan murni pakai Gradle dan Command-Line.
-* **100% Portable Toolchain:** Tidak mengotori Environment Variables (`Path`, `JAVA_HOME`, `ANDROID_HOME`) Windows kamu sama sekali! Semua tools terisolasi di dalam folder `tools/`.
-* **Zero Configuration:** Tidak perlu pusing atur lisensi SDK atau instalasi JDK secara manual. Cukup 1 kali klik.
-* **Anti Overheat:** Tidak ada Red Hat Java Language Server yang berat. Pakai formatter ringan saja.
+* **Tanpa Android Studio:** Jalan murni pakai Gradle dan Command-Line, resource RAM komputer aman!
+* **100% Portable Toolchain:** Tidak mengotori Environment Variables (`Path`, `JAVA_HOME`, `ANDROID_HOME`) Windows kamu sama sekali. Semua tools terisolasi rapi di dalam folder `tools/`.
+* **Zero Configuration:** Tidak perlu pusing atur lisensi SDK Google atau instalasi JDK secara manual. Cukup 1 kali klik `setup.exe`.
+* **Live Logcat Monitoring:** Menggunakan teknologi *Smart PID Tracker*, terminal VS Code akan menampilkan log aplikasi secara *Real-Time* persis seperti Android Studio (bersih dari log sampah sistem HP).
+* **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Tersedia menu khusus untuk menarik log *crash* dan langsung menunjuk ke baris kode Java yang error.
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Gradle 9.5.1**, dan **AGP 9.2.1**.
-* **Automated Build:** Setelah project dibuat, semua build task langsung terintegrasi di VS Code (`Ctrl+Shift+B`).
 
 ***
 
 ## 🛠️ One-Time Setup (Cukup 1x Klik!)
 
-Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa sudah dilengkapi dengan **Automated Installer**.
+Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa dibangun dengan **100% Native C++** yang akan mengotomatiskan segalanya untukmu.
 
-1. Download atau clone repositori ini:
+1. Download atau *clone* repositori ini:
    ```bash
    git clone https://github.com/nabil-aba/paksa.git
    cd paksa
@@ -35,7 +35,8 @@ Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa sudah dil
 4. Tunggu sampai tulisan **[OK] SETUP SELESAI**.
 5. *Selesai! Komputer kamu sekarang sudah siap membuat aplikasi Android.*
 
-> **Catatan:** Install ekstensi ringan ini di VS Code kamu agar koding lebih rapi:
+> **Catatan Ekstensi VS Code:** 
+> Agar koding lebih nyaman dan auto-format, sangat disarankan menginstal:
 > * 🧩 [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 > * ☕ [Prettier Java Plugin](https://marketplace.visualstudio.com/items?itemName=RudraPatel.prettier-plugin-java-vscode)
 > * 📝 [XML Tools](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml)
@@ -44,13 +45,8 @@ Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa sudah dil
 
 ## 🚀 Cara Pakai
 
-### 1. Jalankan `paksa.exe`
+### 1. Buat Project (`paksa.exe`)
 Double-click `paksa.exe` atau jalankan dari terminal untuk membuat project baru:
-```cmd
-paksa.exe
-```
-
-### 2. Isi Data Project
 ```text
 ========================================================
   PAKSA - Paksa Buat Aplikasi Android
@@ -68,12 +64,12 @@ paksa.exe
 Pilih Nomor [1-2]: 1
 ```
 
-### 3. Buka di VS Code
+### 2. Buka di VS Code
 ```bash
 cd MyApp
 code .
 ```
-Project langsung siap di-build. Colok HP, tekan `Ctrl+Shift+B`, dan pilih task.
+Project langsung siap di-build. Colok HP-mu menggunakan kabel USB, buka tab Terminal di VS Code, tekan tombol sakti `Ctrl+Shift+B`, dan pilih Task!
 
 ***
 
@@ -82,14 +78,17 @@ Project langsung siap di-build. Colok HP, tekan `Ctrl+Shift+B`, dan pilih task.
 Setelah project dibuat, semua task ajaib ini sudah langsung tersedia di VS Code:
 
 * 🚀 **1. Run Android (Debug & Test)**
-  Build APK debug, install ke HP, dan launch otomatis. Untuk coding sehari-hari.
+  Build APK, install ke HP, jalankan otomatis, dan terminal akan masuk ke mode **[LIVE MONITORING]**. Menampilkan `Log.d` dan aktivitas aplikasimu secara *Real-Time*. Tekan `Ctrl+C` di terminal untuk berhenti.
 
 * 💎 **2. Build APK (Rilis Resmi)**
   Build APK release yang sudah di-sign, siap untuk di-upload ke Play Store.
   ⚠️ **Jalankan Task 3 dulu** sebelum build release pertama kali!
 
 * 🔑 **3. Bikin Kunci Gembok (Keystore)**
-  Membuat signature `.jks` resmi untuk aplikasi kamu dan otomatis menyimpannya ke `local.properties` (Aman dari Git).
+  Membuat *signature* `.jks` resmi untuk aplikasi kamu dan otomatis menyimpannya ke `local.properties` (Aman dari Git/Maling).
+
+* 🐛 **4. Lihat Logcat (Error Log)**
+  Aplikasi kamu tiba-tiba *Force Close* saat dimainkan tanpa mencolok kabel? Colok HP-mu, jalankan task ini! *Smart Parser* Paksa akan melacak memori HP dan menampilkan baris kode Java mana yang menyebabkan aplikasimu meledak.
 
 ***
 
@@ -117,6 +116,8 @@ MyApp/
 
 ***
 
-## 📜 License
+## 📜 Security & Engine
+Tools executable Paksa (`.exe`) dikompilasi secara dinamis menggunakan C++. Diperkuat dengan **String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi ilegal.
 
+## ⚖️ License
 MIT License — bebas clone, modifikasi, dan bangun *empire startup* dari laptop kentang! 🥔🚀
