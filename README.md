@@ -17,6 +17,7 @@ Built with ❤️ from Indonesia.
 * **Zero Configuration:** Tidak perlu pusing atur lisensi SDK Google atau instalasi JDK secara manual. Cukup 1 kali klik `setup.exe`.
 * **Live Logcat Monitoring:** Menggunakan teknologi *Smart PID Tracker*, terminal VS Code akan menampilkan log aplikasi secara *Real-Time* persis seperti Android Studio (bersih dari log sampah sistem HP).
 * **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Tersedia menu khusus untuk menarik log *crash* dan langsung menunjuk ke baris kode Java yang error.
+* **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Gradle 9.5.1**, dan **AGP 9.2.1**.
 
 ***
@@ -75,19 +76,18 @@ Project langsung siap di-build. Colok HP-mu menggunakan kabel USB, buka tab Term
 
 ## 🎮 Build Tasks (Ctrl+Shift+B)
 
-Setelah project dibuat, semua task ajaib ini sudah langsung tersedia di VS Code:
+Setelah project dibuat, fitur-fitur sakti ini sudah otomatis terintegrasi di VS Code kamu:
 
-* 🚀 **1. Run Android (Debug & Test)**
-  Build APK, install ke HP, jalankan otomatis, dan terminal akan masuk ke mode **[LIVE MONITORING]**. Menampilkan `Log.d` dan aktivitas aplikasimu secara *Real-Time*. Tekan `Ctrl+C` di terminal untuk berhenti.
+* 🚀 **1. Run Debug (Build, Install, & Live Log)**
+  Build APK, simpan ke folder `output/`, install ke HP, jalankan otomatis, dan terminal akan masuk ke mode **[LIVE MONITORING]**. Menampilkan `Log.d` dan aktivitas aplikasimu secara *Real-Time*. Tekan `Ctrl+C` di terminal untuk berhenti.
 
-* 💎 **2. Build APK (Rilis Resmi)**
-  Build APK release yang sudah di-sign, siap untuk di-upload ke Play Store.
-  ⚠️ **Jalankan Task 3 dulu** sebelum build release pertama kali!
+* 💎 **2. Build Release (APK + AAB Siap Publish)**
+  Otomatis membuat file **.apk** dan **.aab** (Android App Bundle) yang sudah di-sign dan dioptimasi. Hasilnya langsung diekstrak ke folder `output/` dan siap untuk di-upload ke Google Play Store. *(Jalankan Task 3 dulu sebelum build release pertama kali!)*
 
-* 🔑 **3. Bikin Kunci Gembok (Keystore)**
+* 🔑 **3. Generate Keystore (Kunci Gembok)**
   Membuat *signature* `.jks` resmi untuk aplikasi kamu dan otomatis menyimpannya ke `local.properties` (Aman dari Git/Maling).
 
-* 🐛 **4. Lihat Logcat (Error Log)**
+* 🐛 **4. Lihat Error Log (Khusus Crash/Force Close)**
   Aplikasi kamu tiba-tiba *Force Close* saat dimainkan tanpa mencolok kabel? Colok HP-mu, jalankan task ini! *Smart Parser* Paksa akan melacak memori HP dan menampilkan baris kode Java mana yang menyebabkan aplikasimu meledak.
 
 ***
@@ -108,6 +108,7 @@ paksa/
 (Folder Project Kamu - Di mana pun kamu jalankan paksa.exe)
 MyApp/
 ├── app/
+├── output/                ← File APK & AAB hasil build akan muncul di sini!
 ├── .vscode/
 │   └── tasks.json         ← Shortcut tombol build
 ├── gradlew.bat
@@ -117,7 +118,7 @@ MyApp/
 ***
 
 ## 📜 Security & Engine
-Tools executable Paksa (`.exe`) dikompilasi secara dinamis menggunakan C++. Diperkuat dengan **String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi ilegal.
+Tools executable Paksa (`.exe`) dikompilasi secara **statis** menggunakan C++. Diperkuat dengan fitur **Compile-time String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi/reverse engineering ilegal.
 
 ## ⚖️ License
 MIT License — bebas clone, modifikasi, dan bangun *empire startup* dari laptop kentang! 🥔🚀
