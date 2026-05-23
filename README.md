@@ -1,6 +1,6 @@
 # PAKSA 🔨
 
-> **Paksa Buat Aplikasi Android** — Android project generator ultra-ringan untuk Windows + VS Code.
+> **Paksa Buat Aplikasi Android** — Android project generator ultra-ringan untuk Windows (Support Mac & Linux) + VS Code.
 
 Buat project Android baru dalam hitungan detik langsung dari terminal. Pilih template, isi nama app dan package, dan project siap dibuka di VS Code — **tanpa Android Studio, dan tanpa setup manual yang rumit**.
 
@@ -13,10 +13,11 @@ Built with ❤️ from Indonesia.
 ## ✨ Kenapa PAKSA?
 
 * **Tanpa Android Studio:** Jalan murni pakai Gradle dan Command-Line, resource RAM komputer aman!
-* **100% Portable Toolchain:** Tidak mengotori Environment Variables (`Path`, `JAVA_HOME`, `ANDROID_HOME`) Windows kamu sama sekali. Semua tools terisolasi rapi di dalam folder `tools/`.
+* **100% Portable Toolchain:** Tidak mengotori Environment Variables (`Path`, `JAVA_HOME`, `ANDROID_HOME`) OS kamu sama sekali. Semua tools terisolasi rapi di dalam folder `tools/`.
 * **Zero Configuration:** Tidak perlu pusing atur lisensi SDK Google atau instalasi JDK secara manual. Cukup 1 kali klik `setup.exe`.
-* **Win32 Watch Mode [NEW]:** Fitur *Auto-Rebuild* murni menggunakan Native Windows API! Setiap kali kamu men-*save* file (`Ctrl+S`), Paksa otomatis mem-build dan merestart aplikasi di HP-mu. Tanpa membebani RAM, dan tanpa butuh Node.js/Nodemon!
-* **Smart Auto-Uninstall [NEW]:** Sering kena error `INSTALL_FAILED_UPDATE_INCOMPATIBLE` saat bolak-balik dari versi Release ke Debug? Paksa otomatis mendeteksi bentrok *signature* dan melakukan *clean install* secara diam-diam.
+* **Cross-Platform Watch Mode [NEW]:** Fitur *Auto-Rebuild* murni menggunakan Native OS API! Setiap kali kamu men-*save* file (`Ctrl+S`), Paksa otomatis mem-build dan merestart aplikasi di HP-mu. Tanpa membebani RAM, dan tanpa butuh Node.js/Nodemon!
+* **Ultra-Fast Native Engine [NEW]:** Tidak lagi mengandalkan PowerShell atau CMD yang lambat. Proses download, ekstrak ZIP, hingga Replace *package name* kini dieksekusi secara instan di level memori (RAM).
+* **Smart Auto-Uninstall:** Sering kena error `INSTALL_FAILED_UPDATE_INCOMPATIBLE` saat bolak-balik dari versi Release ke Debug? Paksa otomatis mendeteksi bentrok *signature* dan melakukan *clean install* secara diam-diam.
 * **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Tersedia menu khusus untuk menarik log *crash* dan langsung menunjuk ke baris kode Java yang error tanpa *log sampah* bawaan Android.
 * **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Gradle 9.5.1**, dan **AGP 9.2.1**.
@@ -25,7 +26,7 @@ Built with ❤️ from Indonesia.
 
 ## 🛠️ One-Time Setup (Cukup 1x Klik!)
 
-Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa dibangun dengan **100% Native C++** yang akan mengotomatiskan segalanya untukmu.
+Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa kini ditenagai oleh **100% Native RUST 🦀** yang akan mengotomatiskan segalanya untukmu dengan aman dan cepat.
 
 1. Download atau *clone* repositori ini:
    ```bash
@@ -33,7 +34,7 @@ Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa dibangun 
    cd paksa
    ```
 2. Klik dua kali (jalankan) file **`setup.exe`**.
-3. Ketik `y` dan enter. Program akan otomatis mengunduh Microsoft OpenJDK 25 dan Android Command-line Tools ke dalam folder `tools/` (~600MB).
+3. Ketik `y` dan enter. Program akan menampilkan *Progress Bar* dan otomatis mengunduh Microsoft OpenJDK 25 serta Android Command-line Tools ke dalam folder `tools/` (~600MB).
 4. Tunggu sampai tulisan **[OK] SETUP SELESAI**.
 5. *Selesai! Komputer kamu sekarang sudah siap membuat aplikasi Android.*
 
@@ -101,7 +102,7 @@ Setelah project dibuat, fitur-fitur sakti ini sudah otomatis terintegrasi di VS 
 ```text
 (Folder Alat PAKSA)
 paksa/
-├── paksa.exe              ← Project Generator
+├── paksa.exe              ← Project Generator (Rust Compiled)
 ├── setup.exe              ← Portable Toolchain Installer
 ├── paksa-tools.exe        ← Build Tools Manager
 ├── tools/                 ← (Hasil dari setup.exe) JDK & Android SDK
@@ -122,7 +123,7 @@ MyApp/
 ***
 
 ## 📜 Security & Engine
-Tools executable Paksa (`.exe`) dikompilasi secara **statis** menggunakan Native C++. Diperkuat dengan fitur **Compile-time String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi/reverse engineering ilegal.
+Tools executable Paksa (`.exe`) dikompilasi secara **Native dengan Rust 🦀**. Bebas dari *Memory Leak*, tidak menggunakan *Shell Command* eksternal yang rentan bug, serta diperkuat dengan fitur **Compile-time String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi/reverse engineering ilegal.
 
 ## ⚖️ License
 MIT License — bebas clone, modifikasi, dan bangun *empire startup* dari laptop kentang! 🥔🚀
