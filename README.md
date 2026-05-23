@@ -15,8 +15,9 @@ Built with ❤️ from Indonesia.
 * **Tanpa Android Studio:** Jalan murni pakai Gradle dan Command-Line, resource RAM komputer aman!
 * **100% Portable Toolchain:** Tidak mengotori Environment Variables (`Path`, `JAVA_HOME`, `ANDROID_HOME`) Windows kamu sama sekali. Semua tools terisolasi rapi di dalam folder `tools/`.
 * **Zero Configuration:** Tidak perlu pusing atur lisensi SDK Google atau instalasi JDK secara manual. Cukup 1 kali klik `setup.exe`.
-* **Live Logcat Monitoring:** Menggunakan teknologi *Smart PID Tracker*, terminal VS Code akan menampilkan log aplikasi secara *Real-Time* persis seperti Android Studio (bersih dari log sampah sistem HP).
-* **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Tersedia menu khusus untuk menarik log *crash* dan langsung menunjuk ke baris kode Java yang error.
+* **Win32 Watch Mode [NEW]:** Fitur *Auto-Rebuild* murni menggunakan Native Windows API! Setiap kali kamu men-*save* file (`Ctrl+S`), Paksa otomatis mem-build dan merestart aplikasi di HP-mu. Tanpa membebani RAM, dan tanpa butuh Node.js/Nodemon!
+* **Smart Auto-Uninstall [NEW]:** Sering kena error `INSTALL_FAILED_UPDATE_INCOMPATIBLE` saat bolak-balik dari versi Release ke Debug? Paksa otomatis mendeteksi bentrok *signature* dan melakukan *clean install* secara diam-diam.
+* **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Tersedia menu khusus untuk menarik log *crash* dan langsung menunjuk ke baris kode Java yang error tanpa *log sampah* bawaan Android.
 * **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Gradle 9.5.1**, dan **AGP 9.2.1**.
 
@@ -78,8 +79,8 @@ Project langsung siap di-build. Colok HP-mu menggunakan kabel USB, buka tab Term
 
 Setelah project dibuat, fitur-fitur sakti ini sudah otomatis terintegrasi di VS Code kamu:
 
-* 🚀 **1. Run Debug (Build, Install, & Live Log)**
-  Build APK, simpan ke folder `output/`, install ke HP, jalankan otomatis, dan terminal akan masuk ke mode **[LIVE MONITORING]**. Menampilkan `Log.d` dan aktivitas aplikasimu secara *Real-Time*. Tekan `Ctrl+C` di terminal untuk berhenti.
+* 🚀 **1. Run Debug (Sekali Build & Install)**
+  Build APK versi Debugging, simpan ke folder `output/`, install ke HP, dan luncurkan aplikasinya secara otomatis.
 
 * 💎 **2. Build Release (APK + AAB Siap Publish)**
   Otomatis membuat file **.apk** dan **.aab** (Android App Bundle) yang sudah di-sign dan dioptimasi. Hasilnya langsung diekstrak ke folder `output/` dan siap untuk di-upload ke Google Play Store. *(Jalankan Task 3 dulu sebelum build release pertama kali!)*
@@ -89,6 +90,9 @@ Setelah project dibuat, fitur-fitur sakti ini sudah otomatis terintegrasi di VS 
 
 * 🐛 **4. Lihat Error Log (Khusus Crash/Force Close)**
   Aplikasi kamu tiba-tiba *Force Close* saat dimainkan tanpa mencolok kabel? Colok HP-mu, jalankan task ini! *Smart Parser* Paksa akan melacak memori HP dan menampilkan baris kode Java mana yang menyebabkan aplikasimu meledak.
+
+* 👀 **5. Watch Mode (Auto-Rebuild saat file di-Save)**
+  *(Highly Recommended)* Aktifkan mode ini, dan nikmati pengalaman ngoding ala *React / WebDev*. Setiap kali kamu menyimpan kode (`Ctrl+S`), Paksa otomatis akan mendeteksinya, melakukan instalasi pembaruan, dan me-restart aplikasinya di HP-mu. Dilengkapi dengan *Timestamp Logging* agar histori *build* tetap rapi!
 
 ***
 
@@ -118,7 +122,7 @@ MyApp/
 ***
 
 ## 📜 Security & Engine
-Tools executable Paksa (`.exe`) dikompilasi secara **statis** menggunakan C++. Diperkuat dengan fitur **Compile-time String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi/reverse engineering ilegal.
+Tools executable Paksa (`.exe`) dikompilasi secara **statis** menggunakan Native C++. Diperkuat dengan fitur **Compile-time String Obfuscation** dan **Anti-Debugging Traps** untuk mencegah modifikasi/reverse engineering ilegal.
 
 ## ⚖️ License
 MIT License — bebas clone, modifikasi, dan bangun *empire startup* dari laptop kentang! 🥔🚀
