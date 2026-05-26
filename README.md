@@ -17,11 +17,45 @@ Built with ❤️ from Indonesia.
 * **Drive C Savior (Anti-Bengkak):** Paksa secara otomatis mengalihkan *Global Cache* Gradle (yang ukurannya bisa bergiga-giga) ke dalam folder `tools/.gradle_cache`. Drive C (sistem Windows) kamu dijamin aman dari tumpukan file sampah!
 * **Smart Zero Configuration:** Tidak perlu pusing atur lisensi SDK Google atau instalasi JDK. Cukup 1 kali jalankan `setup.exe`. Setup ini juga cukup pintar untuk mensinkronkan ulang konfigurasi tanpa perlu men-download ulang jika file sudah ada.
 * **Cross-Platform Watch Mode:** Fitur *Auto-Rebuild* murni menggunakan Native OS API! Setiap kamu men-*save* file (`Ctrl+S`), Paksa otomatis mem-build dan me-restart aplikasi di HP-mu. Tanpa membebani RAM, tanpa butuh Node.js/Nodemon!
-* **Ultra-Fast Native Engine:** Tidak lagi mengandalkan PowerShell atau CMD yang lambat. Download, ekstrak ZIP, hingga replace *package name* dieksekusi secara instan di level memori (RAM).
+* **Ultra-Fast Native Engine:** Tidak lagi mengandalkan PowerShell atau CMD yang lambat. Download, ekstrak ZIP, hingga replace *package name* dieksekusi secara instan di level memori (RAM) menggunakan mesin Rust.
 * **Smart Auto-Uninstall:** Sering kena error `INSTALL_FAILED_UPDATE_INCOMPATIBLE` saat bolak-balik dari versi Release ke Debug? Paksa otomatis mendeteksi bentrok *signature* dan melakukan *clean install* secara diam-diam.
 * **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Menu khusus untuk menarik log *crash* dari ADB, mem-filter berdasarkan package name & PID, dan langsung menunjuk ke baris kode Java/Kotlin yang error — tanpa *log sampah* bawaan Android.
 * **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Build Tools 37.0.0**, Dukungan **Jetpack Compose**, dan **Gradle Terbaru**.
+
+***
+
+## 🤖 PAKSA AI Assistant (Experimental Beta)
+
+PAKSA dilengkapi dengan AI Code Generator cerdas yang bisa menuliskan kode *boilerplate* (MainActivity, Layout, Tema, hingga konfigurasi Manifest) sesuai dengan instruksi bahasa manusiamu.
+
+### Cara Mengatur AI (Universal Hybrid Client)
+Saat pertama kali dijalankan, PAKSA akan membuat file **`paksa_config.json`**. Kamu bebas menggunakan model AI apa pun tanpa perlu *compile* ulang aplikasi.
+
+**Opsi 1: Menggunakan Google AI Studio (Gemini) - GRATIS & Kencang**
+Dapatkan API Key gratis di [Google AI Studio](https://aistudio.google.com/), lalu edit `paksa_config.json` menjadi:
+```json
+{
+  "api_url": "[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent)",
+  "api_key": "AIzaSy...ISI_DENGAN_API_KEY_KAMU",
+  "model": "gemini-3.5-flash"
+}
+
+```
+
+**Opsi 2: Menggunakan OpenRouter (Mendukung DeepSeek, Claude, Llama)**
+Dapatkan API Key di [OpenRouter](https://openrouter.ai/), lalu atur konfigurasi:
+
+```json
+{
+  "api_url": "[https://openrouter.ai/api/v1/chat/completions](https://openrouter.ai/api/v1/chat/completions)",
+  "api_key": "sk-or-v1-...ISI_DENGAN_API_KEY_KAMU",
+  "model": "google/gemini-3.5-flash"
+}
+
+```
+
+*(Catatan: Sistem AI PAKSA sudah dilengkapi dengan proteksi *Anti-Hallucination*, sinkronisasi tema Manifest otomatis, dan Auto-Dependency Injection. Tinggal ketik idemu, dan jalankan di HP!)*
 
 ***
 
@@ -50,7 +84,7 @@ Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa ditenagai
 
 ### 1. Buat Project Baru (`paksa.exe` / `paksa`)
 
-Buka Terminal (CMD/PowerShell/Bash) di folder tempat kamu ingin menyimpan project, lalu ketik `paksa` (jika sudah didaftarkan ke sistem) atau double-click `paksa.exe`:
+Buka Terminal (CMD/PowerShell/Bash) di folder tempat kamu ingin menyimpan project, lalu ketik `paksa` (jika sudah didaftarkan ke PATH) atau double-click `paksa.exe`:
 
 ```text
 ========================================================
@@ -68,14 +102,20 @@ Buka Terminal (CMD/PowerShell/Bash) di folder tempat kamu ingin menyimpan projec
   [3] kotlin-compose.zip
 ========================================================
 Pilih Nomor [1-3]: 1
-```
 
-Paksa akan otomatis:
-- Mengekstrak template yang dipilih ke folder project baru.
-- Membaca `applicationId` lama dari `app/build.gradle`.
-- Menganalisis dan mengganti *package name* lama → baru di: `build.gradle`, `AndroidManifest.xml`, `strings.xml`, dan seluruh file `.java` / `.kt`.
-- Memindahkan struktur folder `java/<old_pkg>` → `java/<new_pkg>` secara aman.
-- Men-generate `.gitignore` dan `.vscode/tasks.json` yang menyembunyikan file raksasa (seperti folder `build/`) dari pandangan Explorer VS Code.
+========================================================
+  PAKSA AI - Asisten Cerdas Pembuat Kode
+========================================================
+💡 Punya ide fitur? (Misal: 'Bikin halaman login minimalis')
+   Kosongkan jika ingin pakai template default:
+   >> bikin halaman login keren warna ungu
+🤖 [PAKSA-AI] Menggunakan Google AI Studio Spec (Gemini)...
+[PAKSA-AI] ⚡ Berhasil! Menerapkan kode ke project...
+📦 [PAKSA-AI] Menyuntikkan library (dependencies) ke build.gradle...
+🎨 [PAKSA-AI] Menyesuaikan tema aplikasi di AndroidManifest.xml...
+✅ [PAKSA-AI] Kode aplikasimu siap dijalankan!
+
+```
 
 ### 2. Buka di VS Code
 
@@ -111,6 +151,7 @@ paksa/                         ← Folder engine PAKSA
 ├── paksa.exe                  ← Project Generator (CLI)
 ├── setup.exe                  ← Smart Toolchain Installer
 ├── paksa-tools.exe            ← Build & Dev Tools / Android Wrapper
+├── paksa_config.json          ← Konfigurasi Eksternal API & Model AI
 ├── tools/                     ← Environment & Tools Android (Hasil setup)
 │   ├── jdk/                   ← Microsoft OpenJDK 25.0.3
 │   ├── android-sdk/           ← Android SDK (platform-tools, build-tools, dst)
