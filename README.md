@@ -20,6 +20,7 @@ Built with ❤️ from Indonesia.
 * **Ultra-Fast Native Engine:** Tidak lagi mengandalkan PowerShell atau CMD yang lambat. Download, ekstrak ZIP, hingga replace *package name* dieksekusi secara instan di level memori (RAM) menggunakan mesin Rust.
 * **Smart Auto-Uninstall:** Sering kena error `INSTALL_FAILED_UPDATE_INCOMPATIBLE` saat bolak-balik dari versi Release ke Debug? Paksa otomatis mendeteksi bentrok *signature* dan melakukan *clean install* secara diam-diam.
 * **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Menu khusus untuk menarik log *crash* dari ADB, mem-filter berdasarkan package name & PID, dan langsung menunjuk ke baris kode Java/Kotlin yang error — tanpa *log sampah* bawaan Android.
+* **Smart ADB Wi-Fi:** Fitur koneksi nirkabel interaktif untuk Android 10 & 11+. Khusus pengguna yang sering *stuck* 97% saat install aplikasi via Wi-Fi, Paksa memiliki taktik pamungkas (Local Web Server Tunneling)!
 * **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Build Tools 37.0.0**, Dukungan **Jetpack Compose**, dan **Gradle Terbaru**.
 
@@ -139,6 +140,8 @@ Setelah project dibuat, fitur-fitur ini sudah otomatis terintegrasi sebagai Task
 | 🔑 **3. Generate Keystore (Kunci Gembok)** | Buat file `.jks` signature via `keytool` → otomatis simpan konfigurasi ke `local.properties` |
 | 🐛 **4. Lihat Error Log (Crash/Force Close)** | Tarik crash log dari ADB → filter per package & PID → tampilkan baris kode yang error |
 | 👀 **5. Watch Mode (Auto-Rebuild saat Save)** | Monitor folder `app/src/` → auto-rebuild & reinstall secara langsung setiap file di-save (`Ctrl+S`) |
+| 📡 **6. Connect ADB Wi-Fi (Tanpa Kabel)** | Hubungkan laptop dan HP secara nirkabel via IP/mDNS (Mendukung Android 10 & 11+). |
+| 📦 **7. Build & Push ke Layar HP (Lewat Browser, Tanpa Install Manual)** | Build APK dan transfer instan via Web Server Lokal + ADB Tunneling. Bypass total sistem keamanan FUSE/MIUI yang sering membuat ADB *stuck*! |
 
 > ⚠️ **Catatan:** Jalankan Task **3 (Generate Keystore)** terlebih dahulu sebelum pertama kali menjalankan Task **2 (Build Release)**.
 
