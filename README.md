@@ -1,6 +1,6 @@
 # PAKSA 🔨
 
-> **Paksa Buat Aplikasi Android** — Android project generator ultra-ringan untuk Windows (Support Mac & Linux) + VS Code.
+> **Paksa Buat Aplikasi Android** — Android project generator ultra-ringan untuk Windows & Linux + VS Code.
 
 Buat project Android baru dalam hitungan detik langsung dari terminal. Pilih template, isi nama app dan package, dan project siap dibuka di VS Code — **tanpa Android Studio, dan tanpa setup manual yang rumit**.
 
@@ -68,7 +68,7 @@ Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa ditenagai
    git clone https://github.com/nabil-aba/paksa.git
    cd paksa
    ```
-2. Jalankan file **`setup.exe`** (Windows) atau **`./setup`** (Mac/Linux).
+2. Jalankan file **`setup.exe`** (Windows) atau **`./setup`** (Linux).
 3. Jawab pertanyaan di terminal (`y`/`n`). Program akan menampilkan *Progress Bar* dan otomatis mengunduh **Microsoft OpenJDK 25.0.3** serta **Android Command-line Tools** ke folder `tools/` (~500 MB - 900 MB).
 4. Jawab `y` saat ditanya apakah ingin mendaftarkan `paksa` ke PATH sistem agar bisa dipanggil dari folder mana saja.
 5. Tunggu sampai tulisan **`[OK] SETUP SELESAI`**.
