@@ -39,9 +39,8 @@ Dapatkan API Key gratis di [Google AI Studio](https://aistudio.google.com/), lal
 {
   "api_url": "[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent)",
   "api_key": "AIzaSy...ISI_DENGAN_API_KEY_KAMU",
-  "model": "gemini-3.5-flash"
+  "model": "gemini-2.5-flash"
 }
-
 ```
 
 **Opsi 2: Menggunakan OpenRouter (Mendukung DeepSeek, Claude, Llama)**
@@ -178,4 +177,6 @@ MyApp/                         ← Folder project kamu (Hasil generate)
 
 ## ⚖️ License
 
-MIT License — bebas clone, modifikasi, dan bangun *empire startup* dari laptop kentang! 🥔🚀
+Copyright © 2026 Nabil. All rights reserved.
+
+Repositori ini mendistribusikan binary PAKSA untuk digunakan secara bebas. Namun, **source code engine PAKSA bersifat proprietary dan tidak untuk didistribusikan ulang, dimodifikasi, atau digunakan untuk tujuan komersial tanpa izin tertulis dari pemilik.**
