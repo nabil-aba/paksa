@@ -112,12 +112,37 @@ Pilih Nomor [1-3]: 1
 🤖 [PAKSA-AI] Menggunakan Google AI Studio Spec (Gemini)...
 [PAKSA-AI] ⚡ Berhasil! Menerapkan kode ke project...
 📦 [PAKSA-AI] Menyuntikkan library (dependencies) ke build.gradle...
-🎨 [PAKSA-AI] Menyesuaikan tema aplikasi di AndroidManifest.xml...
 ✅ [PAKSA-AI] Kode aplikasimu siap dijalankan!
 
 ```
 
-### 2. Buka di VS Code
+### 2. Setup VS Code untuk Project yang Sudah Ada (`paksa init`)
+
+Punya project Android yang sudah ada dan ingin menambahkan **shortcut build tasks VS Code**? Cukup jalankan perintah ini di root folder project-mu:
+
+```bash
+cd MyExistingProject
+paksa init
+```
+
+PAKSA akan otomatis:
+1. Mendeteksi tipe project (**Aplikasi APK** atau **Library .aar**) dari `app/build.gradle`
+2. Membuat folder `.vscode/` beserta `tasks.json` yang sesuai
+3. Meminta konfirmasi jika `tasks.json` sudah ada sebelumnya
+
+```text
+========================================================
+  PAKSA INIT - Setup .vscode untuk Project Ini
+========================================================
+
+✅ .vscode/tasks.json berhasil dibuat!
+   Tipe project terdeteksi: Aplikasi (APK/AAB)
+
+   Buka folder ini di VS Code lalu tekan Ctrl+Shift+B
+   untuk melihat semua task build yang tersedia.
+```
+
+### 3. Buka di VS Code
 
 ```bash
 cd MyApp
@@ -130,7 +155,9 @@ Colok HP via USB (pastikan USB Debugging aktif), buka tab Terminal di VS Code, t
 
 ## 🎮 Build Tasks (`Ctrl+Shift+B`)
 
-Setelah project dibuat, fitur-fitur ini sudah otomatis terintegrasi sebagai Task di VS Code:
+Setelah project dibuat (atau setelah `paksa init`), fitur-fitur ini sudah otomatis terintegrasi sebagai Task di VS Code.
+
+### Untuk Project Aplikasi (APK/AAB)
 
 | Task | Fungsi |
 |------|--------|
@@ -139,8 +166,16 @@ Setelah project dibuat, fitur-fitur ini sudah otomatis terintegrasi sebagai Task
 | 🔑 **3. Generate Keystore (Kunci Gembok)** | Buat file `.jks` signature via `keytool` → otomatis simpan konfigurasi ke `local.properties` |
 | 🐛 **4. Lihat Error Log (Crash/Force Close)** | Tarik crash log dari ADB → filter per package & PID → tampilkan baris kode yang error |
 | 👀 **5. Watch Mode (Auto-Rebuild saat Save)** | Monitor folder `app/src/` → auto-rebuild & reinstall secara langsung setiap file di-save (`Ctrl+S`) |
-| 📡 **6. Connect ADB Wi-Fi (Tanpa Kabel)** | Hubungkan laptop dan HP secara nirkabel via IP/mDNS (Mendukung Android 10 & 11+). |
+| 📡 **6. Connect ADB Wi-Fi (Tanpa Kabel)** | Hubungkan laptop dan HP secara nirkabel via IP/mDNS (Mendukung Android 10 & 11+) |
 | 📦 **7. Build & Push ke Layar HP (Lewat Browser, Tanpa Install Manual)** | Build APK dan transfer instan via Web Server Lokal + ADB Tunneling. Bypass total sistem keamanan FUSE/MIUI yang sering membuat ADB *stuck*! |
+
+### Untuk Project Library (.aar)
+
+| Task | Fungsi |
+|------|--------|
+| 📦 **1. Build Debug Library (.aar)** | Build library versi debug |
+| 💎 **2. Build Release Library (.aar Siap Publish)** | Build library versi release siap distribusi |
+| 👀 **3. Watch Mode (Auto-Rebuild saat file di-Save)** | Auto-rebuild library setiap file di-save |
 
 > ⚠️ **Catatan:** Jalankan Task **3 (Generate Keystore)** terlebih dahulu sebelum pertama kali menjalankan Task **2 (Build Release)**.
 
