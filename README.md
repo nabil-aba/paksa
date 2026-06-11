@@ -168,6 +168,7 @@ Setelah project dibuat (atau setelah `paksa init`), fitur-fitur ini sudah otomat
 | 👀 **5. Watch Mode (Auto-Rebuild saat Save)** | Monitor folder `app/src/` → auto-rebuild & reinstall secara langsung setiap file di-save (`Ctrl+S`) |
 | 📡 **6. Connect ADB Wi-Fi (Tanpa Kabel)** | Hubungkan laptop dan HP secara nirkabel via IP/mDNS (Mendukung Android 10 & 11+) |
 | 📦 **7. Build & Push ke Layar HP (Lewat Browser, Tanpa Install Manual)** | Build APK dan transfer instan via Web Server Lokal + ADB Tunneling. Bypass total sistem keamanan FUSE/MIUI yang sering membuat ADB *stuck*! |
+| 🧹 **8. Clean Project (Hapus Build Cache & Output)** | Jalankan gradle clean → hapus folder output/ dan .gradle/ → project bersih dari cache build |
 
 ### Untuk Project Library (.aar)
 
@@ -176,6 +177,7 @@ Setelah project dibuat (atau setelah `paksa init`), fitur-fitur ini sudah otomat
 | 📦 **1. Build Debug Library (.aar)** | Build library versi debug |
 | 💎 **2. Build Release Library (.aar Siap Publish)** | Build library versi release siap distribusi |
 | 👀 **3. Watch Mode (Auto-Rebuild saat file di-Save)** | Auto-rebuild library setiap file di-save |
+| 🧹 **4. Clean Project (Hapus Build Cache & Output)** | Jalankan gradle clean → hapus folder output/ dan .gradle/ |
 
 > ⚠️ **Catatan:** Jalankan Task **3 (Generate Keystore)** terlebih dahulu sebelum pertama kali menjalankan Task **2 (Build Release)**.
 
