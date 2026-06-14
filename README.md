@@ -23,6 +23,7 @@ Built with ❤️ from Indonesia.
 * **Smart ADB Wi-Fi:** Fitur koneksi nirkabel interaktif untuk Android 10 & 11+. Khusus pengguna yang sering *stuck* 97% saat install aplikasi via Wi-Fi, Paksa memiliki taktik pamungkas (Local Web Server Tunneling)!
 * **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
 * **Modern Standard:** Pre-configured dengan **Android API 37**, **Build Tools 37.0.0**, Dukungan **Jetpack Compose**, dan **Gradle Terbaru**.
+* **Multi-Language Interface:** Antarmuka CLI kini tersedia dalam Bahasa Indonesia dan English. Preferensi tersimpan otomatis di `paksa_config.json`.
 
 ***
 
