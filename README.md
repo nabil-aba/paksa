@@ -1,214 +1,215 @@
 # PAKSA 🔨
 
-> **Paksa Buat Aplikasi Android** — Android project generator ultra-ringan untuk Windows & Linux + VS Code.
+> **Paksa Buat Aplikasi Android** — Ultra-lightweight Android project generator for Windows & Linux + VS Code.
 
-Buat project Android baru dalam hitungan detik langsung dari terminal. Pilih template, isi nama app dan package, dan project siap dibuka di VS Code — **tanpa Android Studio, dan tanpa setup manual yang rumit**.
+Create a new Android project in seconds directly from the terminal. Choose a template, fill in the app name and package, and your project is ready to open in VS Code — **no Android Studio, and no tedious manual setup**.
 
-Dirancang khusus untuk developer yang coding di **laptop low-end (Potato PC)** tapi tetap mau pakai Android API terbaru tanpa bikin laptop kepanasan atau SSD/Drive C penuh.
+Designed specifically for developers coding on **low-end laptops (Potato PCs)** who still want to use the latest Android APIs without overheating their laptop or bloating Drive C/SSD.
 
 Built with ❤️ from Indonesia.
 
 ***
 
-## ✨ Kenapa PAKSA?
+## ✨ Why PAKSA?
 
-* **Tanpa Android Studio:** Jalan murni pakai Gradle dan Command-Line, resource RAM komputer sangat aman!
-* **100% Portable Toolchain:** Tidak mengotori Environment Variables (`PATH`, `JAVA_HOME`, `ANDROID_HOME`) OS kamu sama sekali. Semua tools terisolasi rapi di dalam folder `tools/`.
-* **Drive C Savior (Anti-Bengkak):** Paksa secara otomatis mengalihkan *Global Cache* Gradle (yang ukurannya bisa bergiga-giga) ke dalam folder `tools/.gradle_cache`. Drive C (sistem Windows) kamu dijamin aman dari tumpukan file sampah!
-* **Smart Zero Configuration:** Tidak perlu pusing atur lisensi SDK Google atau instalasi JDK. Cukup 1 kali jalankan `setup.exe`. Setup ini juga cukup pintar untuk mensinkronkan ulang konfigurasi tanpa perlu men-download ulang jika file sudah ada.
-* **Cross-Platform Watch Mode:** Fitur *Auto-Rebuild* murni menggunakan Native OS API! Setiap kamu men-*save* file (`Ctrl+S`), Paksa otomatis mem-build dan me-restart aplikasi di HP-mu. Tanpa membebani RAM, tanpa butuh Node.js/Nodemon!
-* **Ultra-Fast Native Engine:** Tidak lagi mengandalkan PowerShell atau CMD yang lambat. Download, ekstrak ZIP, hingga replace *package name* dieksekusi secara instan di level memori (RAM) menggunakan mesin Rust.
-* **Smart Auto-Uninstall:** Sering kena error `INSTALL_FAILED_UPDATE_INCOMPATIBLE` saat bolak-balik dari versi Release ke Debug? Paksa otomatis mendeteksi bentrok *signature* dan melakukan *clean install* secara diam-diam.
-* **Smart Crash Parser:** Aplikasi tiba-tiba *Force Close*? Menu khusus untuk menarik log *crash* dari ADB, mem-filter berdasarkan package name & PID, dan langsung menunjuk ke baris kode Java/Kotlin yang error — tanpa *log sampah* bawaan Android.
-* **Smart ADB Wi-Fi:** Fitur koneksi nirkabel interaktif untuk Android 10 & 11+. Khusus pengguna yang sering *stuck* 97% saat install aplikasi via Wi-Fi, Paksa memiliki taktik pamungkas (Local Web Server Tunneling)!
-* **Auto-Output & AAB Support:** Hasil build (APK & AAB) otomatis tersimpan rapi di folder `output/`. Siap upload ke Play Store tanpa perlu nyari-nyari file di dalam folder Gradle yang dalam!
-* **Modern Standard:** Pre-configured dengan **Android API 37**, **Build Tools 37.0.0**, Dukungan **Jetpack Compose**, dan **Gradle Terbaru**.
-* **Multi-Language Interface:** Antarmuka CLI kini tersedia dalam Bahasa Indonesia dan English. Preferensi tersimpan otomatis di `paksa_config.json`.
+* **No Android Studio:** Runs purely with Gradle and the Command-Line — your RAM is completely safe!
+* **100% Portable Toolchain:** Does not pollute your OS Environment Variables (`PATH`, `JAVA_HOME`, `ANDROID_HOME`) at all. All tools are neatly isolated inside the `tools/` folder.
+* **🗂️ Isolated Gradle Cache:** By default, Gradle dumps gigabytes of dependency cache into `%USERPROFILE%\.gradle` (Windows) or `~/.gradle` (Linux) — scattered across your system. PAKSA redirects all of that into `tools/.gradle_cache` inside its own folder, keeping your home directory clean and everything self-contained.
+* **Smart Zero Configuration:** No need to bother with Google SDK licenses or JDK installation. Just run `setup.exe` once. The setup is also smart enough to re-sync the configuration without re-downloading if the files already exist.
+* **Cross-Platform Watch Mode:** *Auto-Rebuild* feature powered purely by Native OS API! Every time you save a file (`Ctrl+S`), PAKSA automatically builds and restarts the app on your phone. No RAM overhead, no Node.js/Nodemon required!
+* **Ultra-Fast Native Engine:** No longer relying on slow PowerShell or CMD. Downloading, extracting ZIPs, and replacing *package names* are all executed instantly at memory (RAM) level using a Rust engine.
+* **Smart Auto-Uninstall:** Frequently hitting `INSTALL_FAILED_UPDATE_INCOMPATIBLE` errors when switching between Release and Debug builds? PAKSA automatically detects *signature* conflicts and performs a silent *clean install*.
+* **Smart Crash Parser:** App suddenly *Force Closing*? A dedicated menu pulls crash logs from ADB, filters by package name & PID, and points directly to the Java/Kotlin line causing the error — no Android log noise.
+* **Smart ADB Wi-Fi:** Interactive wireless connection feature for Android 10 & 11+. For users who frequently get *stuck at 97%* when installing apps via Wi-Fi, PAKSA has a master tactic (Local Web Server Tunneling)!
+* **Auto-Output & AAB Support:** Build results (APK & AAB) are automatically saved neatly in the `output/` folder. Ready to upload to the Play Store without hunting for files deep inside Gradle folders!
+* **Modern Standard:** Pre-configured with **Android API 37**, **Build Tools 37.0.0**, **Jetpack Compose** support, and the **Latest Gradle**.
+* **Multi-Language Interface:** The CLI interface is now available in Indonesian and English. Preferences are automatically saved to `paksa_config.json`.
 
 ***
 
 ## 🤖 PAKSA AI Assistant (Experimental Beta)
 
-PAKSA dilengkapi dengan AI Code Generator cerdas yang bisa menuliskan kode *boilerplate* (MainActivity, Layout, Tema, hingga konfigurasi Manifest) sesuai dengan instruksi bahasa manusiamu.
+PAKSA comes with a smart AI Code Generator that can write *boilerplate* code (MainActivity, Layout, Theme, and Manifest configuration) based on your natural language instructions.
 
-### Cara Mengatur AI (Universal Hybrid Client)
-Saat pertama kali dijalankan, PAKSA akan membuat file **`paksa_config.json`**. Kamu bebas menggunakan model AI apa pun tanpa perlu *compile* ulang aplikasi.
+### How to Configure AI (Universal Hybrid Client)
+On first launch, PAKSA will create a **`paksa_config.json`** file. You are free to use any AI model without needing to recompile the application.
 
-**Opsi 1: Menggunakan Google AI Studio (Gemini) - GRATIS & Kencang**
-Dapatkan API Key gratis di [Google AI Studio](https://aistudio.google.com/), lalu edit `paksa_config.json` menjadi:
+**Option 1: Using Google AI Studio (Gemini) - FREE & Fast**
+Get a free API Key at [Google AI Studio](https://aistudio.google.com/), then edit `paksa_config.json` to:
 ```json
 {
-  "api_url": "[https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent)",
-  "api_key": "AIzaSy...ISI_DENGAN_API_KEY_KAMU",
+  "api_url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
+  "api_key": "AIzaSy...YOUR_API_KEY_HERE",
   "model": "gemini-2.5-flash"
 }
 ```
 
-**Opsi 2: Menggunakan OpenRouter (Mendukung DeepSeek, Claude, Llama)**
-Dapatkan API Key di [OpenRouter](https://openrouter.ai/), lalu atur konfigurasi:
+**Option 2: Using OpenRouter (Supports DeepSeek, Claude, Llama)**
+Get an API Key at [OpenRouter](https://openrouter.ai/), then set the configuration:
 
 ```json
 {
-  "api_url": "[https://openrouter.ai/api/v1/chat/completions](https://openrouter.ai/api/v1/chat/completions)",
-  "api_key": "sk-or-v1-...ISI_DENGAN_API_KEY_KAMU",
+  "api_url": "https://openrouter.ai/api/v1/chat/completions",
+  "api_key": "sk-or-v1-...YOUR_API_KEY_HERE",
   "model": "google/gemini-3.5-flash"
 }
-
 ```
 
-*(Catatan: Sistem AI PAKSA sudah dilengkapi dengan proteksi *Anti-Hallucination*, sinkronisasi tema Manifest otomatis, dan Auto-Dependency Injection. Tinggal ketik idemu, dan jalankan di HP!)*
+*(Note: PAKSA's AI system includes *Anti-Hallucination* protection, automatic Manifest theme synchronization, and Auto-Dependency Injection. Just type your idea and run it on your phone!)*
 
 ***
 
-## 🛠️ One-Time Setup (Cukup 1x Klik!)
+## 🛠️ One-Time Setup (Just 1 Click!)
 
-Lupakan cara lama menginstal Java dan Android SDK secara manual. Paksa ditenagai oleh **100% Native RUST 🦀** yang mengotomatiskan segalanya dengan aman dan cepat.
+Forget the old way of manually installing Java and the Android SDK. PAKSA is powered by **100% Native RUST 🦀** that automates everything safely and quickly.
 
-1. Download atau *clone* repositori ini:
+1. Download or *clone* this repository:
    ```bash
    git clone https://github.com/nabil-aba/paksa.git
    cd paksa
    ```
-2. Jalankan file **`setup.exe`** (Windows) atau **`./setup`** (Linux).
-3. Jawab pertanyaan di terminal (`y`/`n`). Program akan menampilkan *Progress Bar* dan otomatis mengunduh **Microsoft OpenJDK 25.0.3** serta **Android Command-line Tools** ke folder `tools/` (~500 MB - 900 MB).
-4. Jawab `y` saat ditanya apakah ingin mendaftarkan `paksa` ke PATH sistem agar bisa dipanggil dari folder mana saja.
-5. Tunggu sampai tulisan **`[OK] SETUP SELESAI`**.
+2. Run **`setup.exe`** (Windows) or **`./setup`** (Linux).
+3. Answer the questions in the terminal (`y`/`n`). The program will display a *Progress Bar* and automatically download **Microsoft OpenJDK 25.0.3** and **Android Command-line Tools** into the `tools/` folder (~500 MB - 900 MB).
+4. Answer `y` when asked whether to register `paksa` to the system PATH so it can be called from any folder.
+5. Wait until you see **`[OK] SETUP COMPLETE`**.
 
-> **Catatan Ekstensi VS Code yang Disarankan:**
+> **Recommended VS Code Extensions:**
 > * 🧩 [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 > * ☕ [Prettier Java Plugin](https://marketplace.visualstudio.com/items?itemName=RudraPatel.prettier-plugin-java-vscode)
 > * 📝 [XML Tools](https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml)
 
 ***
 
-## 🚀 Cara Pakai
+## 🚀 Usage
 
-### 1. Buat Project Baru (`paksa.exe` / `paksa`)
+### 1. Create a New Project (`paksa.exe` / `paksa`)
 
-Buka Terminal (CMD/PowerShell/Bash) di folder tempat kamu ingin menyimpan project, lalu ketik `paksa` (jika sudah didaftarkan ke PATH) atau double-click `paksa.exe`:
+Open a Terminal (CMD/PowerShell/Bash) in the folder where you want to store your project, then type `paksa` (if registered to PATH) or double-click `paksa.exe`:
 
 ```text
 ========================================================
   PAKSA - Paksa Buat Aplikasi Android
   github.com/nabil-aba/paksa
 ========================================================
-1. Nama Folder Project baru : MyApp
-2. Nama Aplikasi (di HP)    : My Application
-3. Package (com.saya.app)   : com.nabil.myapp
+1. New Project Folder Name  : MyApp
+2. Application Name (on phone): My Application
+3. Package (com.myname.app) : com.nabil.myapp
 
 ========================================================
-  TEMPLATE TERSEDIA:
-  [1] java-basic.zip
-  [2] kotlin-basic.zip
-  [3] kotlin-compose.zip
+  AVAILABLE TEMPLATES:
+  [1] android-library.zip
+  [2] cpp-ndk-basic.zip
+  [3] java-basic.zip
+  [4] kotlin-basic.zip
+  [5] kotlin-compose-basic.zip
 ========================================================
-Pilih Nomor [1-3]: 1
+Choose Number [1-5]: 1
 
 ========================================================
-  PAKSA AI - Asisten Cerdas Pembuat Kode
+  PAKSA AI - Smart Code Assistant
 ========================================================
-💡 Punya ide fitur? (Misal: 'Bikin halaman login minimalis')
-   Kosongkan jika ingin pakai template default:
-   >> bikin halaman login keren warna ungu
-🤖 [PAKSA-AI] Menggunakan Google AI Studio Spec (Gemini)...
-[PAKSA-AI] ⚡ Berhasil! Menerapkan kode ke project...
-📦 [PAKSA-AI] Menyuntikkan library (dependencies) ke build.gradle...
-✅ [PAKSA-AI] Kode aplikasimu siap dijalankan!
+💡 Have a feature idea? (e.g. 'Create a minimalist login page')
+   Leave blank to use the default template:
+   >> create a cool purple login page
+🤖 [PAKSA-AI] Using Google AI Studio Spec (Gemini)...
+[PAKSA-AI] ⚡ Success! Applying code to project...
+📦 [PAKSA-AI] Injecting libraries (dependencies) into build.gradle...
+✅ [PAKSA-AI] Your app code is ready to run!
 
 ```
 
-### 2. Setup VS Code untuk Project yang Sudah Ada (`paksa init`)
+### 2. Setup VS Code for an Existing Project (`paksa init`)
 
-Punya project Android yang sudah ada dan ingin menambahkan **shortcut build tasks VS Code**? Cukup jalankan perintah ini di root folder project-mu:
+Have an existing Android project and want to add **VS Code build task shortcuts**? Just run this command in your project's root folder:
 
 ```bash
 cd MyExistingProject
 paksa init
 ```
 
-PAKSA akan otomatis:
-1. Mendeteksi tipe project (**Aplikasi APK** atau **Library .aar**) dari `app/build.gradle`
-2. Membuat folder `.vscode/` beserta `tasks.json` yang sesuai
-3. Meminta konfirmasi jika `tasks.json` sudah ada sebelumnya
+PAKSA will automatically:
+1. Detect the project type (**APK Application** or **.aar Library**) from `app/build.gradle`
+2. Create the `.vscode/` folder along with an appropriate `tasks.json`
+3. Ask for confirmation if `tasks.json` already exists
 
 ```text
 ========================================================
-  PAKSA INIT - Setup .vscode untuk Project Ini
+  PAKSA INIT - Setup .vscode for This Project
 ========================================================
 
-✅ .vscode/tasks.json berhasil dibuat!
-   Tipe project terdeteksi: Aplikasi (APK/AAB)
+✅ .vscode/tasks.json successfully created!
+   Detected project type: Application (APK/AAB)
 
-   Buka folder ini di VS Code lalu tekan Ctrl+Shift+B
-   untuk melihat semua task build yang tersedia.
+   Open this folder in VS Code then press Ctrl+Shift+B
+   to see all available build tasks.
 ```
 
-### 3. Buka di VS Code
+### 3. Open in VS Code
 
 ```bash
 cd MyApp
 code .
 ```
 
-Colok HP via USB (pastikan USB Debugging aktif), buka tab Terminal di VS Code, tekan **`Ctrl+Shift+B`**, dan pilih Task!
+Plug in your phone via USB (make sure USB Debugging is enabled), open the Terminal tab in VS Code, press **`Ctrl+Shift+B`**, and choose a Task!
 
 ***
 
 ## 🎮 Build Tasks (`Ctrl+Shift+B`)
 
-Setelah project dibuat (atau setelah `paksa init`), fitur-fitur ini sudah otomatis terintegrasi sebagai Task di VS Code.
+After creating a project (or after running `paksa init`), these features are automatically integrated as Tasks in VS Code.
 
-### Untuk Project Aplikasi (APK/AAB)
+### For Application Projects (APK/AAB)
 
-| Task | Fungsi |
-|------|--------|
-| 🚀 **1. Run Debug (Build & Install)** | Build APK debug → simpan ke `output/` → install ke HP via ADB → launch otomatis |
-| 💎 **2. Build Release (APK + AAB Siap Publish)** | Build APK + AAB release yang sudah di-sign → simpan ke `output/` → install test ke HP |
-| 🔑 **3. Generate Keystore (Kunci Gembok)** | Buat file `.jks` signature via `keytool` → otomatis simpan konfigurasi ke `local.properties` |
-| 🐛 **4. Lihat Error Log (Crash/Force Close)** | Tarik crash log dari ADB → filter per package & PID → tampilkan baris kode yang error |
-| 👀 **5. Watch Mode (Auto-Rebuild saat Save)** | Monitor folder `app/src/` → auto-rebuild & reinstall secara langsung setiap file di-save (`Ctrl+S`) |
-| 📡 **6. Connect ADB Wi-Fi (Tanpa Kabel)** | Hubungkan laptop dan HP secara nirkabel via IP/mDNS (Mendukung Android 10 & 11+) |
-| 📦 **7. Build & Push ke Layar HP (Lewat Browser, Tanpa Install Manual)** | Build APK dan transfer instan via Web Server Lokal + ADB Tunneling. Bypass total sistem keamanan FUSE/MIUI yang sering membuat ADB *stuck*! |
-| 🧹 **8. Clean Project (Hapus Build Cache & Output)** | Jalankan gradle clean → hapus folder output/ dan .gradle/ → project bersih dari cache build |
+| Task | Function |
+|------|----------|
+| 🚀 **1. Run Debug (Build & Install)** | Build debug APK → save to `output/` → install to phone via ADB → auto launch |
+| 💎 **2. Build Release (APK + AAB Ready to Publish)** | Build signed release APK + AAB → save to `output/` → install test to phone |
+| 🔑 **3. Generate Keystore (Signing Key)** | Create `.jks` signature file via `keytool` → automatically save config to `local.properties` |
+| 🐛 **4. View Error Log (Crash/Force Close)** | Pull crash log from ADB → filter by package & PID → display the erroring code line |
+| 👀 **5. Watch Mode (Auto-Rebuild on Save)** | Monitor `app/src/` folder → auto-rebuild & reinstall live every time a file is saved (`Ctrl+S`) |
+| 📡 **6. Connect ADB Wi-Fi (Wireless)** | Connect laptop and phone wirelessly via IP/mDNS (Supports Android 10 & 11+) |
+| 📦 **7. Build & Push to Phone Screen (Via Browser, No Manual Install)** | Build APK and transfer instantly via Local Web Server + ADB Tunneling. Completely bypasses FUSE/MIUI security systems that often cause ADB to get *stuck*! |
+| 🧹 **8. Clean Project (Delete Build Cache & Output)** | Run gradle clean → delete output/ and .gradle/ folders → project cleared of build cache |
 
-### Untuk Project Library (.aar)
+### For Library Projects (.aar)
 
-| Task | Fungsi |
-|------|--------|
-| 📦 **1. Build Debug Library (.aar)** | Build library versi debug |
-| 💎 **2. Build Release Library (.aar Siap Publish)** | Build library versi release siap distribusi |
-| 👀 **3. Watch Mode (Auto-Rebuild saat file di-Save)** | Auto-rebuild library setiap file di-save |
-| 🧹 **4. Clean Project (Hapus Build Cache & Output)** | Jalankan gradle clean → hapus folder output/ dan .gradle/ |
+| Task | Function |
+|------|----------|
+| 📦 **1. Build Debug Library (.aar)** | Build debug version of library |
+| 💎 **2. Build Release Library (.aar Ready to Publish)** | Build release version of library ready for distribution |
+| 👀 **3. Watch Mode (Auto-Rebuild on Save)** | Auto-rebuild library every time a file is saved |
+| 🧹 **4. Clean Project (Delete Build Cache & Output)** | Run gradle clean → delete output/ and .gradle/ folders |
 
-> ⚠️ **Catatan:** Jalankan Task **3 (Generate Keystore)** terlebih dahulu sebelum pertama kali menjalankan Task **2 (Build Release)**.
+> ⚠️ **Note:** Run Task **3 (Generate Keystore)** before running Task **2 (Build Release)** for the first time.
 
 ***
 
-## 📁 Struktur Folder
+## 📁 Folder Structure
 
 ```text
-paksa/                         ← Folder engine PAKSA
+paksa/                         ← PAKSA engine folder
 ├── paksa.exe                  ← Project Generator (CLI)
 ├── setup.exe                  ← Smart Toolchain Installer
 ├── paksa-tools.exe            ← Build & Dev Tools / Android Wrapper
-├── paksa_config.json          ← Konfigurasi Eksternal API & Model AI
-├── tools/                     ← Environment & Tools Android (Hasil setup)
+├── paksa_config.json          ← External API & AI Model Configuration
+├── tools/                     ← Android Environment & Tools (output of setup)
 │   ├── jdk/                   ← Microsoft OpenJDK 25.0.3
-│   ├── android-sdk/           ← Android SDK (platform-tools, build-tools, dst)
-│   ├── cache/                 ← Cache file zip download
-│   ├── .gradle_cache/         ← Penyimpanan library internet
-│   ├── env.bat / env.sh       ← Script environment variables
-│   └── VERSION.txt            ← Info versi tools yang terpasang
-└── templates/                 ← Template project Android (*.zip)
+│   ├── android-sdk/           ← Android SDK (platform-tools, build-tools, etc.)
+│   ├── cache/                 ← Downloaded zip file cache
+│   ├── .gradle_cache/         ← Internet library storage
+│   ├── env.bat / env.sh       ← Environment variables script
+│   └── VERSION.txt            ← Installed tools version info
+└── templates/                 ← Android project templates (*.zip)
 
-MyApp/                         ← Folder project kamu (Hasil generate)
-├── app/                       ← Source code aplikasi Android
-├── output/                    ← APK & AAB hasil build tersimpan otomatis di sini
+MyApp/                         ← Your project folder (output of generate)
+├── app/                       ← Android application source code
+├── output/                    ← APK & AAB build results automatically saved here
 ├── .vscode/
-│   └── tasks.json             ← Shortcut build tasks untuk Ctrl+Shift+B
+│   └── tasks.json             ← Build task shortcuts for Ctrl+Shift+B
 ├── .gitignore
 ├── gradlew / gradlew.bat
-└── local.properties           ← Konfigurasi keystore (otomatis terabaikan oleh Git)
+└── local.properties           ← Keystore configuration (automatically ignored by Git)
 ```
 
 ***
@@ -217,4 +218,4 @@ MyApp/                         ← Folder project kamu (Hasil generate)
 
 Copyright © 2026 Nabil. All rights reserved.
 
-Repositori ini mendistribusikan binary PAKSA untuk digunakan secara bebas. Namun, **source code engine PAKSA bersifat proprietary dan tidak untuk didistribusikan ulang, dimodifikasi, atau digunakan untuk tujuan komersial tanpa izin tertulis dari pemilik.**
+This repository distributes PAKSA binaries for free use. However, **the PAKSA engine source code is proprietary and may not be redistributed, modified, or used for commercial purposes without written permission from the owner.**
