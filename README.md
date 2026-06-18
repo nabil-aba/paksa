@@ -2,9 +2,9 @@
 
 > **Paksa Buat Aplikasi Android** — Ultra-lightweight Android project generator for Windows & Linux + VS Code.
 
-Create a new Android project in seconds directly from the terminal. Choose a template, fill in the app name and package, and your project is ready to open in VS Code — **no Android Studio, and no tedious manual setup**.
+Create a new Android project in seconds directly from the terminal. Choose a template, fill in the app name and package, and your project is ready to open in VS Code — **without manual setup**.
 
-Designed specifically for developers coding on **low-end laptops (Potato PCs)** who still want to use the latest Android APIs without overheating their laptop or bloating Drive C/SSD.
+Designed specifically for developers coding on **low-end laptops (Potato PCs)** who still want to use the latest Android APIs without overheating their laptop.
 
 Built with ❤️ from Indonesia.
 
@@ -12,9 +12,9 @@ Built with ❤️ from Indonesia.
 
 ## ✨ Why PAKSA?
 
-* **No Android Studio:** Runs purely with Gradle and the Command-Line — your RAM is completely safe!
+* **Pure CLI Build:** Runs purely with Gradle and the Command-Line — your RAM is completely safe!
 * **100% Portable Toolchain:** Does not pollute your OS Environment Variables (`PATH`, `JAVA_HOME`, `ANDROID_HOME`) at all. All tools are neatly isolated inside the `tools/` folder.
-* **🗂️ Isolated Gradle Cache:** By default, Gradle dumps gigabytes of dependency cache into `%USERPROFILE%\.gradle` (Windows) or `~/.gradle` (Linux) — scattered across your system. PAKSA redirects all of that into `tools/.gradle_cache` inside its own folder, keeping your home directory clean and everything self-contained.
+* **Isolated Gradle Cache:** By default, Gradle dumps gigabytes of dependency cache into `%USERPROFILE%\.gradle` (Windows) or `~/.gradle` (Linux) — scattered across your system. PAKSA redirects all of that into `tools/.gradle_cache` inside its own folder, keeping your home directory clean and everything self-contained.
 * **Smart Zero Configuration:** No need to bother with Google SDK licenses or JDK installation. Just run `setup.exe` once. The setup is also smart enough to re-sync the configuration without re-downloading if the files already exist.
 * **Cross-Platform Watch Mode:** *Auto-Rebuild* feature powered purely by Native OS API! Every time you save a file (`Ctrl+S`), PAKSA automatically builds and restarts the app on your phone. No RAM overhead, no Node.js/Nodemon required!
 * **Ultra-Fast Native Engine:** No longer relying on slow PowerShell or CMD. Downloading, extracting ZIPs, and replacing *package names* are all executed instantly at memory (RAM) level using a Rust engine.
